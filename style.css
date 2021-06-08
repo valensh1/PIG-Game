@@ -165,3 +165,7 @@ main {
   font-weight: 700;
   color: #c7365f;
 }
+
+.hidden { /* This is used to hide the dice at beginning of game */
+  display: none;
+}
