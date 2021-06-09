@@ -22,6 +22,7 @@ let playerTurn = 'player1'; // Creation of variable to determine which players t
 let gameOver = false; // Creation of gameOver which will be used to run a lot of code if gameOver is NOT EQUAL to true
 const winningScore = 100; // Creation of variable to which players win the game if they achieve this amount of points
 
+
 //-------------------------------------INITIAL SET-UP OF GAME------------------------------------
 score0DOM.textContent = 0; // Settting initial score of game to 0
 score1DOM.textContent = 0; // Settting initial score of game to 0
@@ -66,12 +67,12 @@ const winCheck = () => { // Function to check winner and add class player--winne
 const playerTurnFunction = () => { // Function to change player turn when player clicks on hold button or when they roll a 1
     if (playerTurn === 'player1') {
         playerTurn = 'player2';
-        player1DOM.classList.remove('player--active');
-        player2DOM.classList.add('player--active');
+        player1DOM.classList.remove('player--active'); //REMOVAL OF ACTIVE PLAYER BACKGROUND; This removes ligher background color from player 1 which indicates it is no longer their turn
+        player2DOM.classList.add('player--active'); // ADD ACTIVE PLAYER BACKGROUND; This adds ligher background color to player 2 which indicates it is currently their turn
     } else if (playerTurn === 'player2') {
         playerTurn = 'player1';
-        player2DOM.classList.remove('player--active');
-        player1DOM.classList.add('player--active');
+        player2DOM.classList.remove('player--active'); // REMOVAL OF ACTIVE PLAYER BACKGROUND; This removes ligher background color from player 1 which indicates it is no longer their turn
+        player1DOM.classList.add('player--active'); // ADD ACTIVE PLAYER BACKGROUND; This adds ligher background color to player 2 which indicates it is currently their turn
     }
 };
 
@@ -101,7 +102,7 @@ const gameReset = () => {
 };
 
 const message = (dice, hold) => { // Function which delivers message to players such as which player won, which player is holding, if you rolled a 1 and lost all your points.
-    if (dice ===1) {
+    if (dice === 1) {
         messageDOM.style.display = 'block'; // Change display to inline-block which shows our message in the DOM to the player 
         messageDOM.textContent = `You lost all your points!!!`; // Message when player rolls a 1
     } else if (hold && scorePlayer1 < winningScore && scorePlayer2 < winningScore) { // Run this line of code when a player chooses hold and they DO NOT have a winning score
@@ -126,6 +127,7 @@ btnRollDOM.addEventListener('click', () => {
 
 // Hold Button Functionality
 btnHoldDOM.addEventListener('click', () => {
+    if (gameOver !== true) {
     currentScore0DOM.textContent = 0; // Resets scores displayed in DOM to 0
     currentScore1DOM.textContent = 0; // Resets scores displayed in DOM to 0
     diceVisibility(); // Function which determines whether to hide dice image. Run here this will hide dice image
@@ -134,9 +136,8 @@ btnHoldDOM.addEventListener('click', () => {
     message(0, 'hold'); // Invoke message function to send message when player is holding; 0 is just a dummy argument passed in since mesage function takes in 2 parameters
     playerTurnFunction(); // This function will run which will change the playersTurn variable to whatever player's turn it is
     activeRollerScore = 0; // Resets active roller score to 0.
+    }
 });
 
 // New Game Functionality
-btnNewDOM.addEventListener('click', () => {
-    gameReset();
-});
+btnNewDOM.addEventListener('click', gameReset); // Resets Game; Run game reset function upon hitting New Game button
