@@ -27,7 +27,7 @@ Alternatively, click [Here to view the finished website on live GitHub page.]( h
 
 ### The challenge
 
-The challenge was to build out a fully functional and interactive JavaScript game with features such as player turn states, keeping score and reflecting current score in the DOM, 
+The challenge was to build out a fully functional and interactive JavaScript game with features such as player turn states, keeping players scores and reflecting scores in the DOM, displaying a dice image based upon dice roll, adding event listeners for all buttons in the game and adding functionality to reset the game. 
 
 ### Screenshot
 
@@ -51,13 +51,16 @@ Finished Version
 ### What I learned
 
 Learned to build an interactive and fully functional JavaScript game utilizing the following:
-- DOM Manipulation
+- DOM Manipulation 
+  - Used classList method to add/remove and toggle between classes
 - Functions
 - Generating random number with Math.random method
 - Displaying different dice images depending on what random number was generated
 - If and or statements
+- Ternary Operators
 - Event Listeners
-  - Adding and removing classes from elements based upon click or keydown event
+  - Adding and removing classes from elements based upon click event.
+- Emoji's
 
 ### Continued development
 
