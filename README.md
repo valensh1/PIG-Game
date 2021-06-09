@@ -61,6 +61,7 @@ Learned to build an interactive and fully functional JavaScript game utilizing t
 - Event Listeners
   - Adding and removing classes from elements based upon click event.
 - Emoji's
+- Animation of winning message using transform property which scaled and translated the message.
 
 ### Continued development
 
