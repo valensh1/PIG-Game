@@ -169,3 +169,45 @@ main {
 .hidden { /* This is used to hide the dice at beginning of game */
   display: none;
 }
+
+.message {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  font-size: 2.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: purple;
+}
+
+.winner {
+  display: block;
+  position: absolute;
+  width: fit-content;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  font-size: 2.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: purple;
+  animation: winningAnimation 2.3s linear .3s infinite;
+}
+
+@keyframes winningAnimation {
+  0% {
+    transform: scale(1) translatex(50%);
+  }
+  50% {
+    transform: scale(1.7) translatex(35%); 
+  }
+  75% {
+    transform: scale(2.5) translatex(28%);
+  }
+  100% {
+    transform: scale(1) translatex(50%);
+  }
+}
+
