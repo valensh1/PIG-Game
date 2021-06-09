@@ -36,6 +36,7 @@ main {
   display: flex;
 }
 
+
 .player {
   flex: 50%;
   padding: 9rem;
@@ -211,3 +212,115 @@ main {
   }
 }
 
+/* MEDIA QUERIES */
+@media screen and (max-width: 1100px) {
+  main {
+    width: 90rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  main {
+    width: 75rem;
+  }
+  .name {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    width: 70rem;
+  }
+  .current {
+    width: fit-content;
+  }
+  .current-label {
+    font-size: 1.2rem;
+  }
+  .current-score {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  main {
+    width: 65rem;
+  }
+  .current-label {
+    font-size: 1.2rem;
+  }
+  .current-score {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    width: 55rem;
+  }
+  .current-label {
+    font-size: 1.2rem;
+  }
+  .current-score {
+    font-size: 2rem;
+  }
+  .btn {
+    width: fit-content;
+    font-size: 1rem;
+  }
+  .name {
+    font-size: 1.3rem;
+  }
+  .score {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  main {
+    width: 90vw;
+    height: 50vh;
+  }
+  .current {
+    width: 15vw;
+    text-align: center;
+  }
+  .current-label {
+    font-size: .5rem;
+    text-align: center;
+    
+  }
+  .current-score {
+    font-size: 1rem;
+  }
+  .btn--roll {
+    transform: translate(-40%,-300%);
+    width: max-content;
+  }
+  .btn--hold {
+    transform: translate(-40%,-300%);
+    width: max-content;
+  }
+  .btn {
+    width: fit-content;
+    height: fit-content;
+    font-size: .5rem;
+    
+  }
+  .name {
+    font-size: 1rem;
+    width: 20vw;
+    display: inline-block;
+  }
+  .score {
+    font-size: 1.5rem;
+  }
+  .player {
+    width: 50%;
+  }
+  .dice {
+    height: 15%;
+    transform: translate(-25%,-50%);
+  }
+}

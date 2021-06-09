@@ -20,7 +20,7 @@ let scorePlayer2 = 0; // Create variable to hold player 2 score
 let activeRollerScore = 0; // Creation of variable for active roller to calculate their points
 let playerTurn = 'player1'; // Creation of variable to determine which players turn. Default is player1.
 let gameOver = false; // Creation of gameOver which will be used to run a lot of code if gameOver is NOT EQUAL to true
-const winningScore = 10; // Creation of variable to which players win the game if they achieve this amount of points
+const winningScore = 100; // Creation of variable to which players win the game if they achieve this amount of points
 
 //-------------------------------------INITIAL SET-UP OF GAME------------------------------------
 score0DOM.textContent = 0; // Settting initial score of game to 0
