@@ -21,7 +21,6 @@ let playerTurn = 'player1'; // Creation of variable to determine which players t
 //-------------------------------------INITIAL SET-UP OF GAME------------------------------------
 score0DOM.textContent = 0; // Settting initial score of game to 0
 score1DOM.textContent = 0; // Settting initial score of game to 0
-diceDOM.classList.add('hidden'); // Used to hide dice such as at beginning of game; CSS for .hidden class shows display:none
 
 
 //---------------------------------------------FUNCTIONS-----------------------------------------
@@ -34,7 +33,7 @@ const diceRoll = () => {
 
 const dicePicture = (dice) => { // Dice from diceRoll function gets passed in as argument
    diceDOM.src = `dice-${dice}.png`; // Take dice and use that as template literal to display correct dice image.
-}
+};
 
 const activePoints = (dice) => { // Function to display points of player currently rolling the dice. Dice passed in as argument from diceRoll function.
     if (dice !== 1) {
@@ -43,14 +42,14 @@ const activePoints = (dice) => { // Function to display points of player current
   } else { // If player rolls a 1 then reset all active points along with the DOM
       activeRollerScore = 0; // Reset active points to 0 since a 1 was rolled
       playerTurn === 'player1' ? currentScore0DOM.textContent = 0 : currentScore1DOM.textContent = 0; // Reset DOM which displays current active points to 0 for the player whose turn just concluded.
-  
+      playerTurnFunction(); // Runs this function to determine which players turn it is
     }
-}
+};
 
 const addPointsToScoreboard = (activeRollerScore) => {
     playerTurn === 'player1' ? scorePlayer1 += activeRollerScore : scorePlayer2 += activeRollerScore;
     playerTurn === 'player1' ? score0DOM.textContent = scorePlayer1 : score1DOM.textContent = scorePlayer2;
-}
+};
 
 const playerTurnFunction = () => { // Function to change player turn when player clicks on hold button or when they roll a 1
     if (playerTurn === 'player1') {
@@ -58,20 +57,40 @@ const playerTurnFunction = () => { // Function to change player turn when player
     } else if (playerTurn === 'player2') {
         playerTurn = 'player1';
     }
-}
+};
 
+const diceVisibility = (roll) => { // Function to toggle between showing dice image and not showing dice image
+    roll ? diceDOM.classList.remove('hidden') : diceDOM.classList.toggle('hidden'); // If it receives an argument of roll then it always makes sure dice is visible otherwise it will be toggled and it either adds or removes the hidden class.
+};
+
+const gameReset = () => {
+    diceVisibility(); // Makes dice hidden again
+    score0DOM.textContent = 0; // Resets scores displayed in DOM to 0
+    score1DOM.textContent = 0; // Resets scores displayed in DOM to 0
+    currentScore0DOM.textContent = 0; // Resets scores displayed in DOM to 0
+    playerTurn = 'player1'; // Resets player turn back to player1 to start game
+    scorePlayer1 = 0; // Resets all score variables to 0
+    scorePlayer2 = 0; // Resets all score variables to 0
+    activeRollerScore = 0; // Resets all score variables to 0
+}
 
 
 //----------------------------------------EVENT LISTENERS----------------------------------------
 // Rolling Dice Functionality
 btnRollDOM.addEventListener('click', () => {
-    diceDOM.classList.remove('hidden'); // Unhide the dice picture because when we first start the game the dice is hidden.
+    diceVisibility('roll'); // Unhide the dice picture because when we first start the game the dice is hidden.
     diceRoll(); // Roll dice 
 });
 
 // Hold Button Functionality
 btnHoldDOM.addEventListener('click', () => {
+    diceVisibility();
     addPointsToScoreboard(activeRollerScore); // When a player hits hold button this line of code will run which will pass activeRollerScore to function that will then update the DOM for the players score along with the players cumulative score. 
     playerTurnFunction(); // This function will run which will change the playersTurn variable to whatever player's turn it is
     activeRollerScore = 0; // Resets active roller score to 0.
+});
+
+// New Game Functionality
+btnNewDOM.addEventListener('click', () => {
+    gameReset();
 });
